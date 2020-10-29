@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %} Request Submit {% endblock title %}
+{% block content %}
+
+
+            <div style="margin-left:20%;"  class="col-md-9">
+                <!-- Form Elements -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Reqeust for a Traine
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div style="margin-left:10%;" class="col-md-9">
+
+                                <form role="form" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form.media.js }}
+
+                                    <div class="form-group">
+                                        <label>Traine Title</label>
+                                        {{ form.title }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Employee ID</label>
+                                        {{ form.employee_id }}
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Employee Name</label>
+                                        {{ form.employee_name }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        {{ form.email }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Designation</label>
+                                        {{ form.designation }}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Zone</label>
+                                        {{ form.zone }}
+
+                                    </div>
+
+                                      <div class="form-group">
+                                        <label>Branch</label>
+                                        {{ form.branch }}
+                                    </div>
+                          <button type="reset" class="btn btn-default">Reset</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+
+                                </form>
+
+
+
+
+</div>
+
+                        </div>
+                    </div>
+                </div>
+                 <!-- End Form Elements -->
+            </div>
+
+
+{% endblock content %}
