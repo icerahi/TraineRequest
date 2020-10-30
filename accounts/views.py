@@ -44,6 +44,11 @@ class SubmitRequestDeleteView(LoginRequiredMixin,DeleteView):
 class TraineRequestListView(LoginRequiredMixin,ListView):
     model = TraineRequest
     template_name = 'request_list.html'
+    
+    def get_queryset(self,*args,**kwargs):
+       queryset=TraineRequest.objects.all()
+       queryset=queryset.filter(user=self.request.user)
+       return queryset
 
 
 class UserInfo(LoginRequiredMixin,DetailView):
