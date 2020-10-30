@@ -25,7 +25,7 @@ SECRET_KEY = 'na3y3658(v@bt53-i_l9t1(dxooua$9te7p=qso8=zyby)9kpw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'accounts',
 
     #thirdparty
-
+    'import_export',
     'smart_selects',
 ]
 
