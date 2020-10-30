@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}Dashboard {% endblock title %}
+{% block title %}User-Info {% endblock title %}
 {% block content %}
 
 <h1>This is profile</h1>
+<div style="margin-left:20%;margin-top:5%" class="col-md-9">
+    <a href="{% url 'profile-edit' object.id object.username%}">Edit</a>
+  <p> Username : {{ object.username }}</p>
+
+ <p>Designation : {{ object.profile.designation.name}} </p>
+<p> Zone :{{object.profile.zone.name}}</p>
+<p>Branch: {{ object.profile.branch.name}}</p>
+
+</div>
+
 {% endblock content %}

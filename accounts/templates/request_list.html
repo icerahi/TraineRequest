@@ -35,7 +35,8 @@
                                             <td>{{object.title.name}}</td>
                                             <td>{{object.zone.name}}</td>
                                             <td>{{object.branch.name}}</td>
-                                            <td> update/Delete</td>
+                                            <td><a href="{% url 'request_update' object.pk%}">update</a>/<a
+                                                    href="{% url 'request_delete' object.pk%}">Delete</a></td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

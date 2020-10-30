@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.views.generic import DetailView
 from smart_selects.db_fields import ChainedForeignKey
 
 
@@ -61,7 +62,7 @@ class TraineRequest(models.Model):
     designation   = models.ForeignKey(Designation,on_delete=models.CASCADE)
     title         = models.ForeignKey(Training_Title,on_delete=models.CASCADE)
     zone          = models.ForeignKey(Zone,on_delete=models.CASCADE)
-    branch        = ChainedForeignKey(Branch, blank=True, null=True, chained_field='zone', chained_model_field='zone',
+    branch = ChainedForeignKey(Branch, blank=True, null=True, chained_field='zone', chained_model_field='zone',
                                show_all=False, auto_choose=True, sort=True)
 
 
@@ -71,3 +72,5 @@ class TraineRequest(models.Model):
 
     class Meta:
         ordering = ['designation']
+
+

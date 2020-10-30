@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,10 +43,6 @@ INSTALLED_APPS = [
 
     #thirdparty
 
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'django.contrib.sites',
     'smart_selects',
 ]
 
@@ -57,7 +54,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+
+    #third_party
+ ]
 
 ROOT_URLCONF = 'projsrc.urls'
 
@@ -81,11 +80,11 @@ WSGI_APPLICATION = 'projsrc.wsgi.application'
 
 
 #for allauth
-SITE_ID = 1
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
+
+LOGIN_URL='/login'
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL='/login'
 #end allauth
 
 # Database

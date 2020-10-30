@@ -13,7 +13,7 @@
       <div style="color: white;
         padding: 15px 50px 5px 50px;
         float: right;
-        font-size: 16px;"><a href="#" class="btn btn-danger square-btn-adjust">Logout</a>
+        font-size: 16px;"><a href="{% url 'logout' %}" class="btn btn-danger square-btn-adjust">Logout</a>
       </div>
 </nav>
 <!-- /. NAV TOP  -->
@@ -38,14 +38,14 @@
 
 
             <li>
-                <a href="#"><i class="fa fa-sitemap fa-3x"></i> Settings <span class="fa arrow"></span></a>
+                <a class="{% if url_name == 'profile' or url_name == 'change_password' %}active-menu{%endif%}" href="#"><i class="fa fa-sitemap fa-3x"></i> Settings <span class="fa arrow"></span></a>
 
-                <ul class="nav nav-second-level">
+                <ul class="nav active-menu nav-second-level">
                     <li>
-                        <a href="">User Info</a>
+                        <a href="{% url 'profile' pk=request.user.id username=request.user.username %}">User Info</a>
                     </li>
                     <li>
-                        <a href="#">Change Password</a>
+                        <a href="{% url 'change_password' %}">Change Password</a>
                     </li>
 
                 </ul>

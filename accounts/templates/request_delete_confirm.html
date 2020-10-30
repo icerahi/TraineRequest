@@ -2,5 +2,46 @@
 {% block title %}Dashboard {% endblock title %}
 {% block content %}
 
-<h1>This is delete confirm</h1>
+<div style="margin-left:20%;"  class="col-md-9">
+                <!-- Form Elements -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are Confirm to delete this request?</h5>
+
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+             <form action="" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                            <p> Traine Title:{{ object.title }}</p>
+                            <p> Employee ID:{{ object.employee_id }}</p>
+                            <p> Employee Name:{{ object.employee_name }}</p>
+                            <p> Designation:{{ object.designation.name }}</p>
+                            <p> Email:{{ object.email }}</p>
+                            <p> Zone :{{ object.zone.name }}</p>
+                            <p> Branch :{{ object.branch.name }}</p>
+
+
+
+
+                 <div class="modal-footer">
+
+                     <a href="{% url 'request_list'%}"><button type="button" class="btn btn-danger" data-dismiss="modal">No</button></a>
+                     <button type="submit" class="btn btn-success">Yes</button>
+      </div>
+             </form>
+
+      </div>
+
+    </div>
+  </div>
+        </div>
+    </div>
+</div>
+
 {% endblock content %}

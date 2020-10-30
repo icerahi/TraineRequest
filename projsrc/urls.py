@@ -17,12 +17,21 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
+
+from projsrc.forms import CustomLoginForm, PasswordChangeForm
+from projsrc.views import user_login
 
 urlpatterns = [
+    path('login/',user_login,name='login'),
+    path('logout/',auth_views.LogoutView.as_view(),name='logout'),
+    path('change_password/', auth_views.PasswordChangeView.as_view(success_url='/',form_class=PasswordChangeForm,
+                                                                   template_name='password_change.html'),name='change_password'),
     path('admin/', admin.site.urls),
     path('',include('accounts.urls')),
-    path('accounts/', include('allauth.urls')),
     path('chaining/', include('smart_selects.urls')),
+
+
 ]
 
 urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
