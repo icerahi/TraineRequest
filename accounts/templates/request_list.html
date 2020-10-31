@@ -3,47 +3,48 @@
 {% block content %}
 
 <div style="margin-left:20%;margin-top:5%" class="col-md-9">
-                  <!--   Kitchen Sink -->
-                    <div class="panel panel-default float-left">
-                        <div class="panel-heading">
-                            List of Traine Request
-                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
+  <!--   Kitchen Sink -->
+    <div class="panel panel-default float-left">
+        <h2>Islamic Bank Training And Research Academy</h2>
+        <h3>Training Need Assessment System</h3>
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
 
-                                            <th>Employee ID</th>
-                                            <th>Employee Name</th>
-                                            <th>Designation</th>
-                                            <th>Email</th>
-                                            <th>Traine Title</th>
-                                            <th> Zone </th>
-                                            <th> Branch </th>
-                                            <th> Actions </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for object in object_list %}
-                                        <tr>
-
-                                            <td>{{object.employee_id}}</td>
-                                            <td>{{object.employee_name}}</td>
-                                            <td>{{object.designation.name}}</td>
-                                            <td>{{object.email}}</td>
-                                            <td>{{object.title.name}}</td>
-                                            <td>{{object.zone.name}}</td>
-                                            <td>{{object.branch.name}}</td>
-                                            <td><a href="{% url 'request_update' object.pk%}">update</a>/<a
-                                                    href="{% url 'request_delete' object.pk%}">Delete</a></td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                     <!-- End  Kitchen Sink -->
-                </div>
+                            <th>#</th>
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+                            <th>Designation</th>
+                            <th>Training Title</th>
+                            <th> Zone </th>
+                            <th> Branch </th>
+                            <th> Actions </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in object_list %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{object.employee_id}}</td>
+                            <td>{{object.employee_name}}</td>
+                            <td>{{object.designation.name}}</td>
+                            <td>{{object.title.name}}</td>
+                            <td>{{object.zone.name}}</td>
+                            <td>{{object.branch.name}}</td>
+                            <td>
+                                <a class="btn btn-info" href="{% url 'request_update' object.pk%}">update</a>
+                                <a class="btn btn-danger" href="{% url 'request_delete' object.pk%}">Delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+     <!-- End  Kitchen Sink -->
+</div>
 {% endblock content %}

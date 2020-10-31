@@ -31,7 +31,7 @@ class TraineRequestAdmin(ImportExportModelAdmin):
 
 
 
-admin.site.site_header = 'Islami Bank Traine Request System'
+admin.site.site_header = 'Training Need Assessment System (TNAS)'
 admin.site.index_title = 'Islami Bank Traine Request System'
 admin.site.site_title = 'Islami Bank Traine Request System'
 
