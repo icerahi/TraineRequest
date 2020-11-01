@@ -21,5 +21,19 @@
  <!-- JS -->
 {% include 'partails/js.html' %}
 
+<!-- Message Modal -->
+        {% if messages %}
+      {% for message in messages %}
+  {% include 'message_modal.html' %}
+
+<script type="application/javascript">
+    $('#message').modal({backdrop:false,show:true});
+    setTimeout(function(){
+    $('#message').modal('hide');
+    },2000);
+</script>
+      {% endfor %}
+    {% endif %}
+
 </body>
 </html>

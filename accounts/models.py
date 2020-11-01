@@ -13,12 +13,19 @@ class Designation(models.Model):
 
     def __str__(self):
         return self.name
+    class Meta:
+        verbose_name_plural = "     Designations"
+
+
 
 class Zone(models.Model):
     name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = "    Zones"
 
 class Branch(models.Model):
     zone = models.ForeignKey(Zone,on_delete=models.CASCADE)
@@ -28,7 +35,7 @@ class Branch(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'Branches'
+        verbose_name_plural = '   Branches'
 
 
 
@@ -39,7 +46,7 @@ class Training_Title(models.Model):
         return self.name
 
     class Meta:
-        verbose_name_plural = 'Training Title'
+        verbose_name_plural = '  Training Titles'
 
 class Profile(models.Model):
     user        = models.OneToOneField(User,unique=True,related_name='profile',on_delete=models.CASCADE)
@@ -54,6 +61,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    class Meta:
+        verbose_name_plural = " Profiles"
 
 @receiver(post_save,sender=User)
 def post_save_user(instance,created,*args,**kwargs):
@@ -72,7 +82,7 @@ class TraineRequest(models.Model):
     zone          = models.ForeignKey(Zone,on_delete=models.CASCADE)
     branch = ChainedForeignKey(Branch, blank=True, null=True, chained_field='zone', chained_model_field='zone',
                                show_all=False, auto_choose=True, sort=True)
-
+    created        = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
 

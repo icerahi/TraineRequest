@@ -1,6 +1,8 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
@@ -11,15 +13,13 @@ from accounts.forms import SubmitRequestForm, ProfileEditForm
 from accounts.models import TraineRequest
 
 
-class IndexView(LoginRequiredMixin,TemplateView):
-    template_name = 'base.html'
 
-
-class SubmitRequestView(LoginRequiredMixin,CreateView):
+class SubmitRequestView(SuccessMessageMixin,LoginRequiredMixin,CreateView):
     model = TraineRequest
     form_class = SubmitRequestForm
     template_name = 'request_submit.html'
     success_url = reverse_lazy('request_list')
+    success_message = '"New Traine Request has been created!"'
 
     def form_valid(self, form):
         form = SubmitRequestForm(self.request.POST)
@@ -29,19 +29,22 @@ class SubmitRequestView(LoginRequiredMixin,CreateView):
 
 
 
-class SubmitRequestUpdateView(LoginRequiredMixin,UpdateView):
+class SubmitRequestUpdateView(SuccessMessageMixin,LoginRequiredMixin,UpdateView):
     model=TraineRequest
     form_class = SubmitRequestForm
     template_name = 'request_update.html'
     success_url = reverse_lazy('request_list')
+    success_message = ' "Request has been updated!"'
 
-class SubmitRequestDeleteView(LoginRequiredMixin,DeleteView):
+
+class SubmitRequestDeleteView(SuccessMessageMixin,LoginRequiredMixin,DeleteView):
     model=TraineRequest
     template_name = 'request_delete_confirm.html'
     success_url = reverse_lazy('request_list')
+    success_message = '"Request has been deleted!"'
 
 
-class TraineRequestListView(LoginRequiredMixin,ListView):
+class TraineRequestListView(SuccessMessageMixin,LoginRequiredMixin,ListView):
     model = TraineRequest
     template_name = 'request_list.html'
     

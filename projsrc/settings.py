@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     #thirdparty
     'import_export',
     'smart_selects',
+
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
