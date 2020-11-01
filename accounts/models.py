@@ -9,29 +9,37 @@ from smart_selects.db_fields import ChainedForeignKey
 
 
 class Designation(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
 
 class Zone(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
 
 class Branch(models.Model):
     zone = models.ForeignKey(Zone,on_delete=models.CASCADE)
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'Branches'
+
+
 
 class Training_Title(models.Model):
-    name = models.CharField(max_length=300)
+    name = models.CharField(max_length=400)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'Training Title'
 
 class Profile(models.Model):
     user        = models.OneToOneField(User,unique=True,related_name='profile',on_delete=models.CASCADE)
@@ -57,8 +65,8 @@ def post_save_user(instance,created,*args,**kwargs):
 class TraineRequest(models.Model):
     user          = models.ForeignKey(User,on_delete=models.CASCADE)
     employee_id   = models.IntegerField()
-    employee_name = models.CharField(max_length=30)
-    email         = models.EmailField()
+    employee_name = models.CharField(max_length=100)
+    # email         = models.EmailField()
     designation   = models.ForeignKey(Designation,on_delete=models.CASCADE)
     title         = models.ForeignKey(Training_Title,on_delete=models.CASCADE)
     zone          = models.ForeignKey(Zone,on_delete=models.CASCADE)
@@ -72,5 +80,6 @@ class TraineRequest(models.Model):
 
     class Meta:
         ordering = ['designation']
+        verbose_name_plural = 'Training Requests'
 
 
